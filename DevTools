@@ -23,5 +23,5 @@ if (document.readyState === 'complete') {
         console.log(`Successfully cleared ${counter} ad items`);
     };
     // calling function
-    hideAds(false);
+    hideAds();
 }
