@@ -1,0 +1,27 @@
+"use strict"
+
+if (document.readyState === 'complete') {
+
+    function hideAds() {
+        
+        const selectLink = document.getElementsByTagName('a'),              // Search all link
+            url = document.location.href.replace(/(^\w+:|^)\/\//, '');      // Сut to the name of the site
+        var counter = 0;                                                    // Create counter
+        
+        for (let i = 0; i < selectLink.length; i++) {
+            /**
+             * Сhoosing links that lead to extraneous resources.
+             * Add a check for the presence of a IMG in the child node.
+             * If the condition is performed, hide the parent node and
+             * increase the counter by 1.
+             */
+            if (!selectLink[i].href.includes(url) && selectLink[i].firstChild.tagName == 'IMG') {           
+                     selectLink[i].parentNode.hidden = true;
+                     counter++;
+                    }
+         }
+        console.log(`Successfully cleared ${counter} ad items`);
+    };
+    // calling function
+    hideAds(false);
+}
